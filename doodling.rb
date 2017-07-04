@@ -293,3 +293,18 @@ def violation_date(arr)
 
 end
 violation_method(violations)
+#*******************************************************************************
+#a method that returns true/false if input is narcissistic number
+def arent_i_great?(integer)
+  arr = integer.to_s.split(//)
+  power = arr.count
+  array = arr.map do |num|
+    num.to_i ** power
+  end
+  if array.reduce(:+) == integer
+    return true
+  else
+    return false
+  end
+end
+puts arent_i_great?(1634)
