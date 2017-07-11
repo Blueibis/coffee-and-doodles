@@ -308,3 +308,39 @@ def arent_i_great?(integer)
   end
 end
 puts arent_i_great?(1634)
+#*******************************************************************************
+#car counting(blackjack)
+def blackjack(string)
+  count = 0
+  array = string.split(//)
+  return false if array.length > 52
+  array.each do |card|
+    count += case card
+    when '2', '3', '4', '5', '6' then 1
+    when 'T', 'J', 'K', 'Q', 'A' then -1
+    when '7', '8', '9' then 0
+    else
+      return "One of the cards is not a card."
+    end
+  end
+  if cheating?(array)
+    return 'The casino is cheating!'
+  else
+    puts "Everything seems clean! Your count is #{count}"
+  end
+end
+def cheating?(array)
+  unique_array = array.uniq
+  unique_array.each do |uniqcard|
+    count_uniq = array.keep_if do |card|
+      card == uniqcard
+    end
+    return true if count_uniq.count > 4
+  end
+  false
+end
+
+puts blackjack('K2T6AA')
+puts blackjack('798TT23')
+puts blackjack('235T22')
+puts blackjack('KKT2KKK')
