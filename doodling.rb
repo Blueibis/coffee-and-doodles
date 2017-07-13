@@ -344,3 +344,17 @@ puts blackjack('K2T6AA')
 puts blackjack('798TT23')
 puts blackjack('235T22')
 puts blackjack('KKT2KKK')
+#*******************************************************************************
+#take a binary string and return it's decimal value
+def bin_to_dec(string)
+  result = 0
+  string.chars.reverse.each_with_index do |char, i|
+    puts "char: #{char}, i: #{i}"
+    result += char.to_i*(2**i)
+  end
+  result
+end
+puts bin_to_dec('01000100')
+puts bin_to_dec('10')
+puts bin_to_dec('101')
+puts bin_to_dec('1')
